@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Weather Now</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="header">
+        <div class="brand"><img src="logo.svg" alt="Weather Now" /></div>
+        <div class="menu">
+          <button id="unitBtn" class="btn">
+            <img src="icon-units.svg" alt="" /> Units ▾
+          </button>
+          <div id="unitMenu" class="dropdown" aria-hidden="true">
+            <button class="row row--primary" data-action="switch-system">
+              <span>Switch to <strong data-system-label>Imperial</strong></span>
+            </button>
+            <div class="section">
+              <div class="heading">Temperature</div>
+              <button class="row" data-group="temp" data-value="c">
+                Celsius (°C)
+                <img class="check" src="icon-checkmark.svg" alt="" />
+              </button>
+              <button class="row" data-group="temp" data-value="f">
+                Fahrenheit (°F)
+                <img class="check" src="icon-checkmark.svg" alt="" />
+              </button>
+            </div>
+            <div class="section">
+              <div class="heading">Wind Speed</div>
+              <button class="row" data-group="wind" data-value="kmh">
+                km/h
+                <img class="check" src="icon-checkmark.svg" alt="" />
+              </button>
+              <button class="row" data-group="wind" data-value="mph">
+                mph <img class="check" src="icon-checkmark.svg" alt="" />
+              </button>
+            </div>
+            <div class="section">
+              <div class="heading">Precipitation</div>
+              <button class="row" data-group="precip" data-value="mm">
+                Millimeters (mm)
+                <img class="check" src="icon-checkmark.svg" alt="" />
+              </button>
+              <button class="row" data-group="precip" data-value="in">
+                Inches (in)
+                <img class="check" src="icon-checkmark.svg" alt="" />
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <h1 class="h1">How's the sky looking today?</h1>
+
+      <div class="controls">
+        <form id="form" class="search" autocomplete="off">
+          <div class="input">
+            <img src="icon-search.svg" alt="" width="16" height="16" /><input
+              id="q"
+              placeholder="Search for a place…"
+            />
+          </div>
+          <button class="button">Search</button>
+        </form>
+      </div>
+
+      <div class="grid" id="grid" hidden>
+        <div>
+          <div class="card hero">
+            <div class="hero-bg" aria-hidden="true"></div>
+            <div class="hero-body">
+              <div class="hero-top">
+                <div class="city" data-city>—</div>
+                <div class="muted" data-date>—</div>
+              </div>
+              <div class="hero-bottom">
+                <img id="heroIcon" src="icon-sunny.webp" alt="Weather" />
+                <div class="hero-temp" data-temp>—</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="info-grid">
+            <div class="tile">
+              <div class="label">Feels Like</div>
+              <div class="val" data-feels>—</div>
+            </div>
+            <div class="tile">
+              <div class="label">Humidity</div>
+              <div class="val" data-humidity>—</div>
+            </div>
+            <div class="tile">
+              <div class="label">Wind</div>
+              <div class="val" data-wind>—</div>
+            </div>
+            <div class="tile">
+              <div class="label">Precipitation</div>
+              <div class="val" data-precip>—</div>
+            </div>
+          </div>
+
+          <div class="card1">
+            <div class="label">Daily forecast</div>
+            <div id="daily" class="daily"></div>
+          </div>
+        </div>
+
+        <div class="card hourly">
+          <div class="title">
+            <div class="label">Hourly forecast</div>
+            <div class="menu">
+              <button id="dayBtn" class="btn">Tuesday ▾</button>
+              <div id="dayMenu" class="dropdown" aria-hidden="true">
+                <button class="row" data-day="Monday">Monday</button>
+                <button class="row" data-day="Tuesday">Tuesday</button>
+                <button class="row" data-day="Wednesday">Wednesday</button>
+                <button class="row" data-day="Thursday">Thursday</button>
+                <button class="row" data-day="Friday">Friday</button>
+                <button class="row" data-day="Saturday">Saturday</button>
+                <button class="row" data-day="Sunday">Sunday</button>
+              </div>
+            </div>
+          </div>
+          <div id="hourly"></div>
+        </div>
+      </div>
+
+      <div id="state" class="center">
+        <img src="icon-loading.svg" alt="Loading" />
+        <div class="muted">Loading…</div>
+        <div class="muted">Search a city to get started.</div>
+      </div>
+    </div>
+
+    <script src="app.js"></script>
+  </body>
+</html>
